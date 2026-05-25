@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake;
 
 /**
@@ -43,6 +42,6 @@ public class BackwardsTimeException extends RuntimeException {
      * @return milliseconds our clock is now from what should be the present
      */
     public long getOffset() {
-        return offset;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider;
 
 import com.github.rholder.fauxflake.api.MachineIdProvider;
-
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.util.Arrays;
-
 import static com.github.rholder.fauxflake.util.MacUtils.macAddress;
 import static com.github.rholder.fauxflake.util.PidUtils.pid;
 
@@ -47,7 +44,6 @@ public class MacPidMachineIdProvider implements MachineIdProvider {
             // first 6 bytes are MAC
             byte[] raw = Arrays.copyOf(macAddress(), 8);
             value = new DataInputStream(new ByteArrayInputStream(raw)).readLong();
-
             // next 2 bytes are pid % 2^16
             value |= pid() % 65536;
         } catch (Throwable t) {
@@ -62,6 +58,6 @@ public class MacPidMachineIdProvider implements MachineIdProvider {
      */
     @Override
     public long getMachineId() {
-        return machineId;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

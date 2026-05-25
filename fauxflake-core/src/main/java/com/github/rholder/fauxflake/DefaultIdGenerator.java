@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake;
 
 import com.github.rholder.fauxflake.api.EncodingProvider;
@@ -39,20 +38,18 @@ public class DefaultIdGenerator implements IdGenerator {
     private volatile long lastTime;
 
     private final TimeProvider timeProvider;
+
     private final EncodingProvider encodingProvider;
+
     private final int startingSequenceNumber;
 
-    public DefaultIdGenerator(TimeProvider timeProvider,
-                              EncodingProvider encodingProvider) {
+    public DefaultIdGenerator(TimeProvider timeProvider, EncodingProvider encodingProvider) {
         this(timeProvider, encodingProvider, 0);
     }
 
-    public DefaultIdGenerator(TimeProvider timeProvider,
-                              EncodingProvider encodingProvider,
-                              int startingSequenceNumber) {
+    public DefaultIdGenerator(TimeProvider timeProvider, EncodingProvider encodingProvider, int startingSequenceNumber) {
         this.timeProvider = timeProvider;
         this.encodingProvider = encodingProvider;
-
         this.lastTime = timeProvider.getCurrentTime();
         this.startingSequenceNumber = startingSequenceNumber;
         this.sequence = 0;
@@ -63,27 +60,24 @@ public class DefaultIdGenerator implements IdGenerator {
         int currentSequence;
         synchronized (LOCK) {
             currentTime = timeProvider.getCurrentTime();
-
             // backwards time, likely due to NTP updates for clock drift
-            if(currentTime < lastTime) {
+            if (currentTime < lastTime) {
                 long diff = lastTime - currentTime;
                 throw new BackwardsTimeException("Backwards time detected, try again in " + diff + " ms", diff);
             }
-
-            if(sequence == encodingProvider.maxSequenceNumbers()) {
+            if (sequence == encodingProvider.maxSequenceNumbers()) {
                 // out of sequence numbers for this clock tick, be evil and hold the lock until the time changes
                 int currentWait = 0;
-                while(currentTime <= lastTime) {
-                    if(currentWait > maxWait) {
-                        throw new WaitTimeExceededException("The maximum time to wait to generate an id has been exceeded") ;
+                while (currentTime <= lastTime) {
+                    if (currentWait > maxWait) {
+                        throw new WaitTimeExceededException("The maximum time to wait to generate an id has been exceeded");
                     }
                     Thread.sleep(1);
                     currentTime = timeProvider.getCurrentTime();
                     currentWait++;
                 }
             }
-
-            if(currentTime != lastTime) {
+            if (currentTime != lastTime) {
                 lastTime = currentTime;
                 sequence = 0;
             }
@@ -95,19 +89,21 @@ public class DefaultIdGenerator implements IdGenerator {
 
     @Override
     public Id generateId(int maxWait) throws InterruptedException {
-        Values values = generateValues(maxWait);
-        return new EncodedId(encodingProvider, values.currentTime, values.currentSequence);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * This is a simple tuple-y pair class.
      */
     public static class Values {
+
         public Values(long currentTime, int currentSequence) {
             this.currentTime = currentTime;
             this.currentSequence = currentSequence;
         }
+
         public long currentTime;
+
         public int currentSequence;
     }
 }

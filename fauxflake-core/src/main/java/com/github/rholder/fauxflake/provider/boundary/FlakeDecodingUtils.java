@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider.boundary;
 
 import java.nio.ByteBuffer;
@@ -31,10 +30,7 @@ public abstract class FlakeDecodingUtils {
      * @param flakeBytes the id to decode from
      */
     public static Date decodeDate(byte[] flakeBytes) {
-        ByteBuffer buffer = ByteBuffer.allocate(16);
-        buffer.put(flakeBytes);
-        buffer.flip();
-        return new Date(buffer.getLong());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -43,11 +39,7 @@ public abstract class FlakeDecodingUtils {
      * @param flakeBytes the id to decode from
      */
     public static long decodeMachineId(byte[] flakeBytes) {
-        ByteBuffer buffer = ByteBuffer.allocate(16);
-        buffer.put(flakeBytes);
-        buffer.flip();
-        buffer.getLong();
-        return buffer.getLong() >>> 16;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -56,10 +48,6 @@ public abstract class FlakeDecodingUtils {
      * @param flakeBytes the id to decode from
      */
     public static int decodeSequence(byte[] flakeBytes) {
-        ByteBuffer buffer = ByteBuffer.allocate(16);
-        buffer.put(flakeBytes);
-        buffer.flip();
-        buffer.getLong();
-        return (int)(buffer.getLong() & 0x000000000000FFFF);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

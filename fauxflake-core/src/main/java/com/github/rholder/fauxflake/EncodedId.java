@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake;
 
 import com.github.rholder.fauxflake.api.EncodingProvider;
@@ -26,7 +25,9 @@ import com.github.rholder.fauxflake.api.Id;
 public class EncodedId implements Id {
 
     private EncodingProvider encodingProvider;
+
     private long time;
+
     private int sequence;
 
     public EncodedId(EncodingProvider encodingProvider, long time, int sequence) {
@@ -37,16 +38,16 @@ public class EncodedId implements Id {
 
     @Override
     public long asLong() {
-        return encodingProvider.encodeAsLong(time, sequence);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public byte[] asBytes() {
-        return encodingProvider.encodeAsBytes(time, sequence);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String asString() {
-        return encodingProvider.encodeAsString(time, sequence);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

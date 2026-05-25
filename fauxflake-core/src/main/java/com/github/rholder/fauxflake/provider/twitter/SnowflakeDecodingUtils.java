@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider.twitter;
 
 import java.util.Date;
@@ -30,7 +29,7 @@ public abstract class SnowflakeDecodingUtils {
      * @param id the id to decode from
      */
     public static Date decodeDate(long id) {
-        return new Date((id >> SnowflakeEncodingProvider.SHIFT_TIME_BITS) + SnowflakeEncodingProvider.EPOCH);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -39,7 +38,7 @@ public abstract class SnowflakeDecodingUtils {
      * @param id the id to decode from
      */
     public static long decodeMachineId(long id) {
-        return (int)((id & 0x00000000003FF000) >> SnowflakeEncodingProvider.SHIFT_MACHINE_CODE_BITS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -48,6 +47,6 @@ public abstract class SnowflakeDecodingUtils {
      * @param id the id to decode from
      */
     public static int decodeSequence(long id) {
-        return (int)(id & 0x0000000000000FFF);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

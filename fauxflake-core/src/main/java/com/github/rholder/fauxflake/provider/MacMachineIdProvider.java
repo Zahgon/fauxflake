@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider;
 
 import com.github.rholder.fauxflake.api.MachineIdProvider;
-
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.util.Arrays;
-
 import static com.github.rholder.fauxflake.util.MacUtils.macAddress;
 
 /**
@@ -55,6 +52,6 @@ public class MacMachineIdProvider implements MachineIdProvider {
      */
     @Override
     public long getMachineId() {
-        return machineId;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

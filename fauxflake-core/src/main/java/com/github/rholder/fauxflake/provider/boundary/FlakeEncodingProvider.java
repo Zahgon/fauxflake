@@ -13,13 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider.boundary;
 
 import com.github.rholder.fauxflake.api.EncodingProvider;
-
 import java.nio.ByteBuffer;
-
 import static com.github.rholder.fauxflake.util.StringUtils.leftPad;
 import static java.lang.Long.toHexString;
 
@@ -52,27 +49,7 @@ public class FlakeEncodingProvider implements EncodingProvider {
      */
     @Override
     public byte[] encodeAsBytes(long time, int sequence) {
-        byte[] buffer = new byte[16];
-        buffer[0] = (byte) (time >>> 56);
-        buffer[1] = (byte) (time >>> 48);
-        buffer[2] = (byte) (time >>> 40);
-        buffer[3] = (byte) (time >>> 32);
-        buffer[4] = (byte) (time >>> 24);
-        buffer[5] = (byte) (time >>> 16);
-        buffer[6] = (byte) (time >>> 8);
-        buffer[7] = (byte) (time);
-
-        long rest = shiftedMachineId | (0x0000FFFF & sequence);
-        buffer[8] = (byte) (rest >>> 56);
-        buffer[9] = (byte) (rest >>> 48);
-        buffer[10] = (byte) (rest >>> 40);
-        buffer[11] = (byte) (rest >>> 32);
-        buffer[12] = (byte) (rest >>> 24);
-        buffer[13] = (byte) (rest >>> 16);
-        buffer[14] = (byte) (rest >>> 8);
-        buffer[15] = (byte) (rest);
-
-        return buffer;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -85,7 +62,7 @@ public class FlakeEncodingProvider implements EncodingProvider {
      */
     @Override
     public long encodeAsLong(long time, int sequence) {
-        throw new UnsupportedOperationException("Long value not supported");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -98,17 +75,11 @@ public class FlakeEncodingProvider implements EncodingProvider {
      */
     @Override
     public String encodeAsString(long time, int sequence) {
-        StringBuilder s = new StringBuilder(32);
-        ByteBuffer bb = ByteBuffer.wrap(encodeAsBytes(time, sequence));
-        s.append(leftPad(toHexString(bb.getLong()), 16, '0'));
-        s.append(leftPad(toHexString(bb.getLong()), 16, '0'));
-
-        return s.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int maxSequenceNumbers() {
-        // 2^16
-        return 65536;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

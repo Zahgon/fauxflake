@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake;
 
 import com.github.rholder.fauxflake.api.EncodingProvider;
@@ -38,8 +37,7 @@ public abstract class IdGenerators {
      * @return the {@link IdGenerator}
      */
     public static IdGenerator newSnowflakeIdGenerator() {
-        MachineIdProvider machineIdProvider = new MacPidMachineIdProvider();
-        return newSnowflakeIdGenerator(machineIdProvider);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -49,8 +47,7 @@ public abstract class IdGenerators {
      * @return the {@link IdGenerator}
      */
     public static IdGenerator newSnowflakeIdGenerator(MachineIdProvider machineIdProvider) {
-        EncodingProvider encodingProvider = new SnowflakeEncodingProvider(machineIdProvider.getMachineId());
-        return new DefaultIdGenerator(new SystemTimeProvider(), encodingProvider);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,8 +57,7 @@ public abstract class IdGenerators {
      * @return the {@link IdGenerator}
      */
     public static IdGenerator newFlakeIdGenerator() {
-        MachineIdProvider machineIdProvider = new MacMachineIdProvider();
-        return newFlakeIdGenerator(machineIdProvider);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -71,7 +67,6 @@ public abstract class IdGenerators {
      * @return the {@link IdGenerator}
      */
     public static IdGenerator newFlakeIdGenerator(MachineIdProvider machineIdProvider) {
-        EncodingProvider encodingProvider = new FlakeEncodingProvider(machineIdProvider.getMachineId());
-        return new DefaultIdGenerator(new SystemTimeProvider(), encodingProvider);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

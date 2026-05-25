@@ -13,11 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider.twitter;
 
 import com.github.rholder.fauxflake.api.EncodingProvider;
-
 import static com.github.rholder.fauxflake.util.StringUtils.leftPad;
 import static java.lang.Long.toHexString;
 
@@ -70,24 +68,12 @@ public class SnowflakeEncodingProvider implements EncodingProvider {
 
     @Override
     public byte[] encodeAsBytes(long time, int sequence) {
-        long v =  ((time - EPOCH) << SHIFT_TIME_BITS) | shiftedMachineId | sequence;
-
-        byte[] buffer = new byte[8];
-        buffer[0] = (byte)(v >>> 56);
-        buffer[1] = (byte)(v >>> 48);
-        buffer[2] = (byte)(v >>> 40);
-        buffer[3] = (byte)(v >>> 32);
-        buffer[4] = (byte)(v >>> 24);
-        buffer[5] = (byte)(v >>> 16);
-        buffer[6] = (byte)(v >>>  8);
-        buffer[7] = (byte)(v);
-
-        return buffer;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long encodeAsLong(long time, int sequence) {
-        return ((time - EPOCH) << SHIFT_TIME_BITS) | shiftedMachineId | sequence;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -96,11 +82,11 @@ public class SnowflakeEncodingProvider implements EncodingProvider {
      */
     @Override
     public String encodeAsString(long time, int sequence) {
-        return leftPad(toHexString(encodeAsLong(time, sequence)), 16, '0');
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int maxSequenceNumbers() {
-        return MAX_SEQUENCE_NUMBERS;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

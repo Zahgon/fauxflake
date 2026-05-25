@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.provider;
 
 import com.github.rholder.fauxflake.api.TimeProvider;
@@ -26,6 +25,6 @@ public class SystemTimeProvider implements TimeProvider {
 
     @Override
     public long getCurrentTime() {
-        return System.currentTimeMillis();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

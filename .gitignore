@@ -5,3 +5,8 @@ out
 *.iml
 *.ipr
 *.iws
+
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/

@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.rholder.fauxflake.util;
 
 import java.lang.management.ManagementFactory;
@@ -28,16 +27,6 @@ public abstract class PidUtils {
      * retrieved. This should work on most *nix JVM implementations.
      */
     public static int pid() {
-        int localPID = 0;
-        try {
-            String name = ManagementFactory.getRuntimeMXBean().getName();
-            String[] nameSplit = name.split("@");
-            if(nameSplit.length > 1) {
-                localPID = Integer.parseInt(nameSplit[0]);
-            }
-            return localPID;
-        } catch(Throwable t) {
-            throw new UnsupportedOperationException("An error occurred while getting the PID: " + t.getMessage()) ;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
